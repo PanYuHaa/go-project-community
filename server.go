@@ -1,9 +1,9 @@
 package main
 
 import (
-	"go-project-community/controller"
-	"go-project-community/repository"
-	"gopkg.in/gin-gonic/gin.v1"
+	"github.com/PanYuHaa/go-project-community/controller"
+	"github.com/PanYuHaa/go-project-community/repository"
+	"github.com/gin-gonic/gin"
 	"os"
 )
 
