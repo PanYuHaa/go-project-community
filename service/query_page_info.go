@@ -2,7 +2,7 @@ package service
 
 import (
 	"errors"
-	"go-project-community/repository"
+	"github.com/PanYuHaa/go-project-community/repository"
 	"sync"
 )
 
@@ -23,10 +23,10 @@ func NewQueryPageInfoFlow(topId int64) *QueryPageInfoFlow {
 
 type QueryPageInfoFlow struct {
 	topicId  int64
-	pageInfo *PageInfo	// pageInfo界面的对象
+	pageInfo *PageInfo // pageInfo界面的对象
 
-	topic   *repository.Topic	// Topic对象
-	posts   []*repository.Post	// Post对象
+	topic *repository.Topic  // Topic对象
+	posts []*repository.Post // Post对象
 }
 
 func (f *QueryPageInfoFlow) Do() (*PageInfo, error) {
@@ -56,12 +56,12 @@ func (f *QueryPageInfoFlow) prepareInfo() error {
 	go func() {
 		defer wg.Done()
 		topic := repository.NewTopicDaoInstance().QueryTopicById(f.topicId) // TopicDao.QueryTopicById(id int64)
-		f.topic = topic	// 把Topic放入QueryPageInfoFlow里面
+		f.topic = topic                                                     // 把Topic放入QueryPageInfoFlow里面
 	}()
 	//获取post列表
 	go func() {
 		defer wg.Done()
-		posts := repository.NewPostDaoInstance().QueryPostsByParentId(f.topicId)	// 都是通过id来索引
+		posts := repository.NewPostDaoInstance().QueryPostsByParentId(f.topicId) // 都是通过id来索引
 		f.posts = posts
 	}()
 	wg.Wait()

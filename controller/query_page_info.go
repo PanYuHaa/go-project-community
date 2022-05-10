@@ -1,7 +1,7 @@
 package cotroller
 
 import (
-	"go-project-community/service"
+	"github.com/PanYuHaa/go-project-community/service"
 	"strconv"
 )
 
@@ -10,8 +10,9 @@ type PageData struct {
 	Msg  string      `json:"msg"`
 	Data interface{} `json:"data"`
 }
+
 func QueryPageInfo(topicIdStr string) *PageData {
-	topicId, err := strconv.ParseInt(topicIdStr, 10, 64)	// 端上传来的是string类型的，所以要转型int
+	topicId, err := strconv.ParseInt(topicIdStr, 10, 64) // 端上传来的是string类型的，所以要转型int
 	if err != nil {
 		return &PageData{
 			Code: -1,

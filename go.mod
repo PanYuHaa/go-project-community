@@ -1,4 +1,4 @@
-module go-project-community
+module "github.com/PanYuHaa/go-project-community"
 
 go 1.17
 
